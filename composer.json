@@ -1,4 +1,6 @@
 {
-    "name": "andreacardelli/pitbullcache"
-   
+    "name": "andreacardelli/pitbullcache"	
+    "autoload": {
+        "classmap": ["cache_core.php"]
+    }
 }
