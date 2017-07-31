@@ -3,8 +3,8 @@
 
 abstract class Pitbull_Base_Cache
 {
-		abstract function __construct($config);
-	    abstract function fetch($key);
+	abstract function __construct($config);
+        abstract function fetch($key);
         abstract function store($key,$data,$ttl);
         abstract function delete($key);
 }
