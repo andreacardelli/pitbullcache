@@ -1,6 +1,8 @@
 {
     "name": "andreacardelli/pitbullcache",	
     "autoload": {
-      				 "psr-0": {"PitBull_Cache": "src/"}
-   				}
+        "classmap": [
+            "src/PitBull_Cache.php"
+        ]
+    }
 }
