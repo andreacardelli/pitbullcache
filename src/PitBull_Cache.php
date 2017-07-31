@@ -1,6 +1,6 @@
 <?php
 // Classi per varie tipologie di cache con Dynamic Factories
-namespace PitBullCache;
+namespace PitBull_Cache;
 
 abstract class Pitbull_Base_Cache
 {
