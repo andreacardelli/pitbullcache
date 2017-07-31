@@ -14,6 +14,9 @@ class Pitbull_Filesystem_Cache extends Pitbull_Base_Cache
 
 	function __construct($config) {
 		$this->path = $config;
+		if (!file_exists($this->path)) {
+		    mkdir($this->path, 0777, true);
+		}
 	}
 	 // This is the function you store information with
 	function store($key,$data,$ttl) {
