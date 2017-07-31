@@ -83,18 +83,19 @@ class Pitbull_Filesystem_Cache extends Pitbull_Base_Cache
 class Pitbull_Redis_Cache extends Pitbull_Base_Cache
 {
 		function __construct ($config) {
-			//Predis\Autoloader::register();
-			//$cache = new Predis\Client($config);
-			echo "configurazione: ".$config."<br>";
+			$this->cache = new Predis\Client($config);
 		}
 		function fetch($key) { 
-			return "fetch redis key";
+			return json_decode($this->cache->get($key),true);;
 		}
         function store($key,$data,$ttl) { 
-        	return "store redis key";
+        	$this->cache->set($key, json_encode($data));
+        	$this->cache->expire($key,$ttl);
+        	return $key;
         }
         function delete($key) {
-        	return "delete redis key";
+        	$this->cache->del($key);
+        	return "OK";
     	}
 }
 
