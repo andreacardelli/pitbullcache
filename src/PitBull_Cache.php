@@ -14,8 +14,11 @@ class Pitbull_Filesystem_Cache extends Pitbull_Base_Cache
 
 	function __construct($config) {
 		$this->path = $config;
-		if (!file_exists($this->path)) {
-		    mkdir($this->path, 0777, true);
+		if (!is_dir($this->path)) {
+		    if (mkdir($this->path, 0777, true)) throw new Exception('Could not create cache directory'); ;
+		    $h=fopen($this->path."/.gitgnore",'a+');
+		    fwrite($h,'[^.]*');
+		    fclose($h);
 		}
 	}
 	 // This is the function you store information with
@@ -23,7 +26,7 @@ class Pitbull_Filesystem_Cache extends Pitbull_Base_Cache
 
 		// Opening the file in read/write mode
 		$h = fopen($this->getFileName($key),'a+');
-		if (!$h) throw new Exception('Could not write to cache');
+		if (!$h) throw new Exception('Could not open cache file');
 
 		flock($h,LOCK_EX); // exclusive lock, will get released when the file is closed
 
@@ -97,8 +100,7 @@ class Pitbull_Redis_Cache extends Pitbull_Base_Cache
         	return $key;
         }
         function delete($key) {
-        	$this->cache->del($key);
-        	return "OK";
+        	return $this->cache->del($key);
     	}
 }
 
