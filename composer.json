@@ -1,8 +1,24 @@
 {
-    "name": "andreacardelli/pitbullcache",	
-    "autoload": {
-        "classmap": [
-            "src/PitBull_Cache.php"
-        ]
-    }
+   "name": "andreacardelli/pitbullcache",
+   "description": "Php Cache System",
+   "keywords": ["cache", "file", "redis","php","memcached"],
+   "homepage": "https://github.com/andreacardelli/pitbullcache",
+   "license": "MIT",
+   "authors": [
+      {
+         "name": "Andrea Cardelli",
+         "email": "cardelli@gmail.com",
+         "homepage": "http://dannyvankooten.com/"
+      },
+      {
+         "name": "Yuri Bacciarini"
+      }
+   ],
+   "require": {
+      "php": ">=5.3.0"
+   },
+   
+   "autoload": {
+      "classmap": ["src/PitBull_Cache.php"]
+   }
 }
