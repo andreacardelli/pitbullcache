@@ -1,14 +1,4 @@
 {
-    "name": "andreacardelli/pitbullcache",
-    "description": "Cache System for PHP Projects",
-    "authors": [
-        {
-            "name": "Andrea Cardelli",
-            "email": "cardelli@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-
-    }
+    "name": "andreacardelli/pitbullcache"
+   
 }
