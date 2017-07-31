@@ -1,6 +1,6 @@
 {
     "name": "andreacardelli/pitbullcache",	
     "autoload": {
-      				 "psr-0": {"PitBullCache": "src/"}
+      				 "psr-0": {"PitBull_Cache": "src/"}
    				}
 }
