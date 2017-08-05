@@ -92,7 +92,7 @@ class Pitbull_Filesystem_Cache extends Pitbull_Base_Cache
 		$files = glob($this->path.'/*');
 		$totalfiles = $deleted= 0;
 		foreach($files as $filename) {
-		    $totalefiles++;
+		    $totalfiles++;
 		    //foreach get the content
 			$data = file_get_contents($filename);
 			//unserializza i dati
@@ -104,7 +104,7 @@ class Pitbull_Filesystem_Cache extends Pitbull_Base_Cache
 				$deleted++;
 			}
 		}
-		$return = array('total_files'=>$totalfiles,'deleted_files'=>$deleted);
+		$return = array('total_files'=>($totalfiles-$deleted),'deleted_files'=>$deleted);
 		return ($output=='array')?$return:json_encode($return);
 	}
 
@@ -198,7 +198,7 @@ class Pitbull_S3_Cache extends Pitbull_Base_Cache
 		$files = $this->cache->getBucket($this->bucket,'pitbullcache');
 		$totalfiles = $deleted= 0;
 		foreach($files as $filename=>$value) {
-			$totalefiles++;
+			$totalfiles++;
 		    //foreach get the content
 			$data = file_get_contents($filename);
 			//unserializza content
@@ -210,7 +210,7 @@ class Pitbull_S3_Cache extends Pitbull_Base_Cache
 				$deleted++;
 			}
 		}
-		$return = array('total_files'=>$totalfiles,'deleted_files'=>$deleted);
+		$return = array('total_files'=>($totalfiles-$deleted),'deleted_files'=>$deleted);
 		return ($output=='array')?$return:json_encode($return);
 	}
 
