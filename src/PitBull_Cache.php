@@ -217,7 +217,7 @@ class Pitbull_S3_Cache extends Pitbull_Base_Cache
   	private function getFileName($key) {
       	return 'pitbullcache/' . $this->sanitizeKey($key);
   	}
-}
+} 
 
 
 abstract class Pitbull_DynamicFactory
