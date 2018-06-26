@@ -31,14 +31,19 @@ How to use it
 =============
 
 We can use any type of cache, here an example with "file" type for caching full HTML page, third parameters contains configuration used by each low level storage (file: directory, redis: standard config for predis\client, S3: key and secret)
+
+Define your cache (multiple cache for different purposes are allowed)
 ```php
 
 Pitbull_Cache::Register("file","Pitbull_Filesystem_Cache","/pitbullcache.cache/");
 $_cache = Pitbull_Cache::Create("file");
-  	
-// here you can define any type ok key, must be unique of course
+```
+define your unique key 
+```php
 $idpagecache = md5($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-
+```
+retrieve the cached value of your key if it exists and if it is still valid otherwise you get false
+```php
 if ($page=$_cache->fetch($idpagecache)) {
 	echo $page;
 	exit();
