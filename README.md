@@ -9,7 +9,7 @@ Currently the cache systems abstracted by PitBullCache are:
 - Redis (Predis\Client)
 - Amazon S3 (tpyo/amazon-s3-php-class)
 
-Method implemented are:
+Implemented methods are:
 - Fetch key
 - Store key
 - Delete key
@@ -29,10 +29,10 @@ PitBullCache supports composer, just add the packagist dependency:
 How to use it
 =============
 
-We can use any type of cache, here an example with "file" type for caching full HTML page
+We can use any type of cache, here an example with "file" type for caching full HTML page, third parameters contains configuration used by each low level storage (file: directory, redis: standard config for predis\client, S3: key and secret)
 ```php
 if(class_exists("Pitbull_Cache")){
-	Pitbull_Cache::Register("file","Pitbull_Filesystem_Cache",dirname(__FILE__) . "/pitbullcache.cache/");
+	Pitbull_Cache::Register("file","Pitbull_Filesystem_Cache","/pitbullcache.cache/");
 	$_cache = Pitbull_Cache::Create("file");
   	
 	// here you can define any type ok key, must be unique of course
