@@ -5,7 +5,7 @@ With PitBullCache you can speed up web sites by caching any type of data: variab
 
 Currently the cache systems abstracted by PitBullCache are:
 
-- File System: uses file system to save data saved in a directory containing the serialized data.
+- File System: uses file system to save data in a directory containing the serialized data one file for each unique key
 - Redis (Predis\Client)
 - Amazon S3 (tpyo/amazon-s3-php-class)
 
@@ -13,6 +13,7 @@ Implemented methods are:
 - Fetch key
 - Store key
 - Delete key
+- cleanUpExpired (useful jsut for file system)
 
 Installation
 =============
@@ -51,4 +52,7 @@ if(class_exists("Pitbull_Cache")){
 	$_cache->store($idpagecache,$page,86400);
 }
 ```
-
+for files sytem cleaning we added a class to be called with a batch job (cron)
+```php
+	$_cache->cleanUpExpired('arrayy'); // or 'json' to get back number of deleted items
+```
