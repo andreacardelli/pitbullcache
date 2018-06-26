@@ -1,5 +1,5 @@
 # PitBullCache
-PitBullCache is a fast and simple PHP Cache library with the minimum functionalities needed that abstracts different cache mechanisms. It is easy to use and implement with new cache mechanism.
+PitBullCache is a fast and simple PHP Cache library with the minimum functionalities needed that abstracts different cache mechanisms. It is easy to use and easy to implement with new cache mechanism (MemCache,...).
 
 With PitBullCache you can speed up web sites by caching any type of data: variables, queries or even full HTML pages.
 
@@ -14,7 +14,8 @@ Method implemented are:
 - Store key
 - Delete key
 
-#Installation
+Installation
+=============
 ### Composer
 PitBullCache supports composer, just add the packagist dependency: 
 ```javascript
