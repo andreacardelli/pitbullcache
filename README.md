@@ -33,8 +33,10 @@ We can use any type of cache, here an example with "file" type for caching full 
 if(class_exists("Pitbull_Cache")){
 	Pitbull_Cache::Register("file","Pitbull_Filesystem_Cache",dirname(__FILE__) . "/pitbullcache.cache/");
 	$_cache = Pitbull_Cache::Create("file");
-  // here you can define any type ok key, must be unique of course
+  	
+	// here you can define any type ok key, must be unique of course
 	$idpagecache = md5($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+	
 	if ($page=$_cache->fetch($idpagecache)) {
 		echo $page;
 		exit();
