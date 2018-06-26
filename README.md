@@ -32,27 +32,24 @@ How to use it
 
 We can use any type of cache, here an example with "file" type for caching full HTML page, third parameters contains configuration used by each low level storage (file: directory, redis: standard config for predis\client, S3: key and secret)
 ```php
-if(class_exists("Pitbull_Cache")){
-	Pitbull_Cache::Register("file","Pitbull_Filesystem_Cache","/pitbullcache.cache/");
-	$_cache = Pitbull_Cache::Create("file");
+
+Pitbull_Cache::Register("file","Pitbull_Filesystem_Cache","/pitbullcache.cache/");
+$_cache = Pitbull_Cache::Create("file");
   	
-	// here you can define any type ok key, must be unique of course
-	$idpagecache = md5($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-	
-	if ($page=$_cache->fetch($idpagecache)) {
-		echo $page;
-		exit();
-	}
+// here you can define any type ok key, must be unique of course
+$idpagecache = md5($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+
+if ($page=$_cache->fetch($idpagecache)) {
+	echo $page;
+	exit();
 }
 ```
 and for storing keys...
 ```php
-if(class_exists("Pitbull_Cache")){
-	// caching full html $page for 1 day (86400 seconds)
-	$_cache->store($idpagecache,$page,86400);
-}
+// caching full html $page for 1 day (86400 seconds)
+$_cache->store($idpagecache,$page,86400);
 ```
 for files sytem cleaning we added a class to be called with a batch job (cron)
 ```php
-	$_cache->cleanUpExpired('arrayy'); // or 'json' to get back number of deleted items
+$_cache->cleanUpExpired('arrayy'); // or 'json' to get back number of deleted items
 ```
