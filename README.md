@@ -54,7 +54,7 @@ and for storing keys...
 // caching full html $page for 1 day (86400 seconds)
 $_cache->store($idpagecache,$page,86400);
 ```
-for files sytem cleaning we added a class to be called with a batch job (cron)
+(optional) for files sytem cleaning and S3 we added a class to be called with a batch job (cron) for other type of cache storage it just returns the number of cached active objects
 ```php
-$_cache->cleanUpExpired('arrayy'); // or 'json' to get back number of deleted items
+$_cache->cleanUpExpired('array'); // or 'json' to get back number of deleted items
 ```
