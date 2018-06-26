@@ -47,7 +47,7 @@ if(class_exists("Pitbull_Cache")){
 and for storing keys...
 ```php
 if(class_exists("Pitbull_Cache")){
-	// caching full html $page for 1 days (86400 seconds)
+	// caching full html $page for 1 day (86400 seconds)
 	$_cache->store($idpagecache,$page,86400);
 }
 ```
