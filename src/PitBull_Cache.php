@@ -9,7 +9,7 @@ abstract class Pitbull_Base_Cache
         abstract function delete($key);
         abstract function cleanUpExpired($output);
         function sanitizeKey($key) {
-   			$pattern = '/[^a-zA-Z0-9_-:]/';
+   			$pattern = '/[^:a-zA-Z0-9_-]/';
 			return preg_replace($pattern, '_', (string) $key);
 		}
 }
